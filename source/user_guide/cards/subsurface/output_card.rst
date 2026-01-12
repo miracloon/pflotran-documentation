@@ -26,10 +26,23 @@ MASS_BALANCE_FILE
  Opens the mass balance output file block. Mass balance output will be 
  generated, which includes global mass balance as well as fluxes at all 
  boundaries for water and chemical species specified for output in the 
- :ref:`chemistry-card`.
+ :ref:`chemistry-card`. **Note that fluxes across prescribed conditions,
+ total energy balance and energy fluxes are not included in 
+ mass balance files.**
 
-Within the SNAPSHOT_FILE, OBSERVATION_FILE, and MASS_BALANCE_FILE blocks, the 
-following cards can be specified:
+CONSERVATION_FILE
+ Opens the conservation output file block. Total mass and energy
+ conservation output will be generated, which includes global mass and
+ energy balance as well as mass and energy fluxes at all boundaries,
+ prescribed boundaries and source/sinks for fluids and 
+ chemical species specified for output in the :ref:`chemistry-card`.
+ Note that these files are different from mass balance files to ensure the
+ backward compatibility of mass balance files in external workflows.
+ **Conservation files will likely be the format of choice for simulation
+ mass and energy conservation in the future.**
+
+Within the SNAPSHOT_FILE, OBSERVATION_FILE, MASS_BALANCE_FILE, and 
+CONSERVATION_FILE blocks, the following cards can be specified:
 
  TIMES <string> <float> ... <float>
   Specifies a list of times when output will be generated. <string> indicates 
@@ -50,11 +63,9 @@ following cards can be specified:
   If included, the final state of the system will not be printed to the output 
   file.
 
- EXTEND_HDF5_TIME_FORMAT
-  Extends the time format in group names to 13 digits of precision (default = 6   digits of precision).  This better enables the printing of small time step.'
-
 Within the SNAPSHOT_FILE and OBSERVATION_FILE blocks (but not 
-MASS_BALANCE_FILE), the variables to be saved can be specified:
+CONSERVATION_FILE or MASS_BALANCE_FILE), the variables to be saved can 
+be specified:
 
 .. _output-variables:
 
@@ -231,22 +242,25 @@ To obtain the most up to date list, look in output.F90:OutputVariableRead().
   default output, you can turn defaults off by including ``NO_FLOW_VARIABLES`` 
   or ``NO_ENERGY_VARIABLES``.
   
-Within the SNAPSHOT_FILE block only, the output file format can be specified:
+Within the SNAPSHOT_FILE block only, the following cards can be specified:
 
  FORMAT <string>
   Specifies the output file type for snapshots in time. Options available include TECPLOT BLOCK, TECPLOT POINT, VTK, HDF5, HDF5 SINGLE_FILE, or HDF5 MULTIPLE_FILES.  The default for HDF5 is SINGLE_FILE. For HDF5 MULTIPLE_FILES, each snapshot will be printed into a new HDF5 file. The optional keyword TIMES_PER_FILE <int> can be included, which will limit the number of snapshots printed to each HDF5 file to <int> number of snapshots.  **The POINT format is not supported in parallel. PFLOTRAN will switch from POINT to BLOCK if the number of cores employed is greater than one.**
+
+ EXTEND_HDF5_TIME_FORMAT
+  Extends the time format in group names to 13 digits of precision (default = 6 digits of precision). This greater precision enables the printing of very small time step increments.'
 
 Within the MASS_BALANCE_FILE block only, you can specify the sub-block NO_PRINT_SOURCE_SINK which will not print out source and sinks to the mass ballance file and the sub-block TOTAL_MASS_REGIONS which specifies a list of regions where the total component mass is calculated within the region. The total component mass includes all species in the aqueous, sorbed, and precipitated states is outputted in [mols] (see examples below).
 
 Optional Cards
 --------------
 The following cards are placed within the OUTPUT block, but outside of the
-SNAPSHOT_FILE, OBSERVATION_FILE, or MASS_BALANCE_FILE blocks. 
+SNAPSHOT_FILE, OBSERVATION_FILE, MASS_BALANCE_FILE, or CONSERVATION_FILE blocks.
 
-PERIODIC_OBSERVATION TIME <float> <string>
+PERIODIC_OBSERVATION TIME <float> <string> **(DEPRECATED)**
   Generates output for observation points and mass balance at every <float> units of time, where <string> defines the units of time.
 
-PERIODIC_OBSERVATION TIMESTEP <int>
+PERIODIC_OBSERVATION TIMESTEP <int> **(DEPRECATED)**
   Generates output for observation points and mass balance at every <int> number of timesteps.
 
 TIME_UNITS <string>
@@ -261,7 +275,7 @@ VARIABLES
  including ``NO_FLOW_VARIABLES`` or ``NO_ENERGY_VARIABLES``.
  
 VELOCITY_AT_CENTER / VELOCITY_AT_FACE
-
+ Determines where the velocities that written are calculated (cell vs face center).
 
 Examples
 --------
@@ -297,6 +311,9 @@ Examples
         all
         top
       /
+    /
+    CONSERVATION_FILE
+      PERIODIC TIMESTEP 1
     /
     SCREEN PERIODIC 15
   /

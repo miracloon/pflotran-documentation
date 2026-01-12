@@ -158,7 +158,7 @@ mathjax3_config = {
       'streleccond': r'{\text{S}\,\strinvlength}',
       'strelecpotential': r'{\text{V}}',
       'strmolfraction': [r'{\strmol\,\text{#1}\,\{\strmol\,\text{#2}\}\inv}',2],
-      'strmassfraction': [r'{\strmass\,\text{#1}\,\{\strmass\,\ext{#2}\}\inv}',2],
+      'strmassfraction': [r'{\strmass\,\text{#1}\,\{\strmass\,\text{#2}\}\inv}',2],
       'units':      [r'{\left[{#1}\right]}',1],
       'unitless':   [r'{\units{\strnull}}'],
       'unitsfrac':  [r'{\left[#1\{#2\}\inv\right]}',2],
