@@ -170,6 +170,11 @@ GEOTHERMAL_HPT
  @EXPERT
  Turns on the geothermal high pressure-temperature capability.
 
+ELECTRICAL_CONDUCTIVITY_METHOD
+ Specifies the method used to calculate fluid electrical conductivity 
+ (e.g., for use in output, geophysics, etc.). Options include: LINEAR, 
+ PSEUDO_LINEAR, MOBILITY.
+
 # Undocumented
 # UPDATE_ARMOR_MINERAL_SURFACE
 # UPDATE_ARMOR_MINERAL_SURFACE_FLAG

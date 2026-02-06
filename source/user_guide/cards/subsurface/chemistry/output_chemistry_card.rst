@@ -103,6 +103,10 @@ PRINT_VERBOSE_CONSTRAINTS
  total component concentration are printed, ordered by descending percent
  contribution to the total.
 
+ELECTRICAL_CONDUCTIVITY
+ Prints the fluid electrical conductivity calculated based on the specified
+ ELECTRICAL_CONDUCTIVITY_METHOD.
+
 **Notes:**
  - By default, ALL and MINERALS specify that volume fractions and kinetic rates 
    be printed for all kinetic minerals.  To print saturation indices for 
