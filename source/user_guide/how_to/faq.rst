@@ -232,7 +232,7 @@ changes occasionally. If PFLOTRAN does not compile, try reconfiguring PETSc,
 making sure you check out the correct changeset-id. Details are provided on
 the installation pages: 
 :ref:`installation`. An example is shown below. **The changeset-id shown below**
-**is not be the most current. Please use the changeset-id provided on the** 
+**may not be the most current. Please use the changeset-id provided on the** 
 **installation pages:** :ref:`installation`.
 
 .. code-block:: bash
