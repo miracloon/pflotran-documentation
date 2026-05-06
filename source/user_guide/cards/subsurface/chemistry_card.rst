@@ -6,6 +6,8 @@ CHEMISTRY
 =========
 Specifies geochemistry details for multicomponent transport.
 
+For help creating a list of SECONDARY_SPECIES, GAS_SPECIES, and MINERALS given a list of PRIMARY_SPECIES, use the [reaction species finder](https://reactions.gentleplants.com/).
+
 Required Cards:
 ---------------
 
