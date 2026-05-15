@@ -79,7 +79,7 @@ Within the HDF5 file, the dataset takes the following form (names used in these 
   d. Max Buffer Size <int>: size of internal buffer storing (time) slices
      of a transient dataset when the entire dataset cannot be held in memory.
      Must be greater than 1 for non-STEP interpolation.
-  e. Interpolation Method <string>: string = 'STEP' or 'LINEAR'
+  e. Space Interpolation Method <string>: string = 'STEP' or 'LINEAR'
   f. Cell Centered <bool>: the dataset is cell centered.  Otherwise, it is node 
      centered and you need an additional entry for each dimension (e.g. nx+1 
      values for X).
