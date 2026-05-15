@@ -19,12 +19,12 @@ echo "$SSH_PRIVATE_KEY2" | base64 -d > ./key.txt
 chmod 600 ./key.txt
 
 echo 'transfering tarball'
-scp -P 2222 -i ./key.txt -oStrictHostKeyChecking=no ./gitlab.tar.gz pflotran@108.167.189.107:~
+scp -P 2222 -i ./key.txt -oStrictHostKeyChecking=no ./gitlab.tar.gz pflotran@108.167.172.157:~
 exit_status=$?
 if [ $exit_status -eq 0 ]; then
   echo 'transfer successful'
   echo 'extracting tarball to' $TARGET_DIR
-  ssh -p 2222 -i ./key.txt -oStrictHostKeyChecking=no pflotran@108.167.189.107 "/bin/rm -Rf $TARGET_DIR/* && tar -xzvf gitlab.tar.gz -C $TARGET_DIR/. && /bin/rm gitlab.tar.gz"
+  ssh -p 2222 -i ./key.txt -oStrictHostKeyChecking=no pflotran@108.167.172.157 "/bin/rm -Rf $TARGET_DIR/* && tar -xzvf gitlab.tar.gz -C $TARGET_DIR/. && /bin/rm gitlab.tar.gz"
   exit_status=$?
   if [ $exit_status -eq 0 ]; then
     echo 'extraction successful'
