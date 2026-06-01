@@ -25,7 +25,7 @@ fi
 BITBUCKET_API_ROOT="https://api.bitbucket.org/2.0"
 BITBUCKET_STATUS_API="$BITBUCKET_API_ROOT/repositories/$BITBUCKET_NAMESPACE/$BITBUCKET_REPOSITORY/commit/$CI_COMMIT_SHA/statuses/build"
 
-BITBUCKET_KEY="ci/gitlab-ci/${BUILD_KEY:-pipeline}"
+BITBUCKET_KEY="Go to GitLab"
 
 case "$BUILD_STATUS" in
   running)
