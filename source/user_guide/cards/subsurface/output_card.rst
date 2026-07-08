@@ -257,6 +257,11 @@ Optional Cards
 The following cards are placed within the OUTPUT block, but outside of the
 SNAPSHOT_FILE, OBSERVATION_FILE, MASS_BALANCE_FILE, or CONSERVATION_FILE blocks.
 
+ASCII_DIGITS_OF_PRECISION <int> <optional int>
+  Modifies the number of significant digits in double precision data written to
+  ASCII formated output files. The first values is the number of digits of
+  of precision. The optional value is the number of digits in the exponent (2 or 3).
+
 PERIODIC_OBSERVATION TIME <float> <string> **(DEPRECATED)**
   Generates output for observation points and mass balance at every <float> units of time, where <string> defines the units of time.
 
@@ -282,6 +287,7 @@ Examples
  ::
 
   OUTPUT
+    ASCII_DIGITS_OF_PRECISION 9 3
     TIME_UNITS yr
     SNAPSHOT_FILE
       FORMAT HDF5 MULTIPLE_FILES TIMES_PER_FILE 10 
@@ -321,6 +327,7 @@ Examples
  ::
 
   OUTPUT
+    ASCII_DIGITS_OF_PRECISION 6
     VARIABLES
       LIQUID_PRESSURE
       POROSITY
