@@ -68,9 +68,9 @@ CPR_OPTIONS
    Defines the approach to decoupling the block matrix.
    There are two main methods: alternate-block-factorization(ABF)
    and quasi-implicit-pressure-explicit-saturation (QIMPES).
-   Available cards are ABF, QIMPES_IMMISCIBLE, QIMPES_TWO_UNKNOWNS,
-   QIMPES_VARIABLE, QIMPES_THREE_UNKNOWNS, QIMPES, QIMPES_ANY_UNKONWN,
-   QIMPES_VARIABLE_FORCE. Default = QIMPES.
+   Available cards are ABF, ABF_TWO_UNKNOWNS, ABF_IMMISCIBLE, ABF_THREE_UNKNOWNS,
+   ABF_MISCIBLE, ABF_GENERIC, QIMPES_IMMISCIBLE, QIMPES_TWO_UNKNOWNS,
+   QIMPES. Default = QIMPES.
 
   T1_SCALE
    This options scales the decoupled pressure block to keep the shape of long
