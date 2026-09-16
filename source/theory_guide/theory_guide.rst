@@ -56,6 +56,15 @@ Process Models Under Development
    /theory_guide/multiple_continuum.rst
    /theory_guide/mode_geomechanics.rst
 
+Regions
++++++++
+
+.. toctree::
+   :maxdepth: 2
+
+   /theory_guide/polygon.rst
+   /theory_guide/planar_patch.rst
+
 Numerical Methods
 +++++++++++++++++
 
