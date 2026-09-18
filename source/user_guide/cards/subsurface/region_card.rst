@@ -107,7 +107,15 @@ Within the REGION block, one of:
   **See ASCII examples below or ASCII and HDF5 examples in PFLOTRAN_DIR/regression_tests/default/discretization.**
 
  :ref:`polygonal-region-card`
-  Opens a block for defining a region by intersecting two polygons in separate XY, XZ or YZ planes.
+  Opens a block for defining a volume as the intersection of one, two,
+  or three polygons in the XY, XZ, and/or YZ planes, each extruded
+  along the unused axis. A cell is included if its center lies in the
+  volume (default).
+
+ :ref:`planar-patch-region-card`
+  Opens a block for defining a finite-thickness elliptical or rectangular
+  patch in an arbitrary plane. Cells that *intersect* the patch are
+  included.
 
 Optional Card:
 --------------

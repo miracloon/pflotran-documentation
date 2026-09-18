@@ -7,22 +7,30 @@ Back to :ref:`region-card`
 POLYGON
 =======
 
-Define a region by intersecting two polygons defined in separate XY, 
-XZ or YZ planes.
+Define a volume as the intersection of one, two, or three polygons
+in the coordinate planes. Each polygon is extruded along the unused
+axis (``XY`` along :math:`z`, ``XZ`` along :math:`y`, ``YZ`` along
+:math:`x`).
+A coordinate plane that is omitted is treated as infinite.
+
+By default a cell is included if its **center** lies in every
+defined extrusion. See :ref:`polygon-theory` in the Theory Guide.
 
 Required Cards:
 ---------------
 
 POLYGON
-  Opens the POLYGON blocks within a REGION block
+  Opens the POLYGON block within a REGION block.
 
-Within the POLYGON block, two of the following:
+Within the POLYGON block, one or more of:
 
  XY
-  Specifies a list of coordinates defining a polygon in the XY plane.
-  Two points define a rectangle. N > 2 points define a polygon and 
-  must be listed in clockwise or counter-clockwise order.
-  
+  Vertices of a polygon in the XY plane. Two points define an
+  axis-aligned rectangle. :math:`N > 2` points define a simple polygon
+  and must be listed clockwise or counter-clockwise without
+  repeating the first vertex. The unused coordinate (:math:`z`) is
+  required on each line and is ignored. At most 100 vertices.
+
    ::
 
     XY
@@ -34,18 +42,24 @@ Within the POLYGON block, two of the following:
     /
 
  XZ
-  Same as XY, but in the XZ plane.
+  Same as XY, but in the XZ plane (unused coordinate is :math:`y`).
 
  YZ
-  Same as XY, but in the YZ plane.
+  Same as XY, but in the YZ plane (unused coordinate is :math:`x`).
 
 Optional Cards:
 ---------------
 
 TYPE <string>
- Defines whether the region is mapped to all BOUNDARY_FACES_IN_VOLUME or 
- all CELL_CENTERS_IN_VOLUME (BOUNDARY_FACES_IN_VOLUME is only supported 
- for implicit unstructgured grids). Default = CELL_CENTERS_IN_VOLUME
+  How the volume is mapped onto the grid.
+
+  CELL_CENTERS_IN_VOLUME
+    Default. Include a cell if its center lies in every defined
+    extrusion. Cell-body intersection is not tested. All grid types.
+
+  BOUNDARY_FACES_IN_VOLUME
+    Include boundary faces whose centroids lie in the volume.
+    Implicit unstructured grids only.
 
 Examples
 --------
@@ -97,4 +111,3 @@ Examples
       /
     /
   END
-
