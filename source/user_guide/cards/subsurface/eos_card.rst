@@ -130,9 +130,6 @@ HENRYS_CONSTANT <string> <optional parameters>
     Calculate Henry's constant using correlations for water-vapor/air mixutures (Fernandez-Prini et al.).
     Henry's constant is calculated as a function of temperature and saturation pressure.
 
-FORMULA_WEIGHT <float> 
-  Set the molecular weight for the gas component. Units g/mol.
-
 TEST <float> <float> <float> <float> <int> <int> <string> <string>
  Tests the equation of state (currently gas density only).  The order of the arguments are temperature low [C], temperature high [C], pressure low [Pa], pressure high [Pa], number of temperatures, number of pressures, temperature distribution [uniform,log], pressure distribution [uniform,log]
 
@@ -175,6 +172,5 @@ Examples
       B 0.08664
     /
     VISCOSITY CONSTANT 9.0829d-6
-    FORMULA_WEIGHT 2.01588D0
   END
   
