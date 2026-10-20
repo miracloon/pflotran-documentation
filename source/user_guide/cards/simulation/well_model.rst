@@ -44,6 +44,10 @@ TYPE
     a hydrostatic calculation.
   WIPP_DARCY
     Darcy flow is solved throughout the well.
+  CLOSED_LOOP_U_SHAPE
+    Closed-loop heat exchanger (TH mode) in which fluid enters the pipe at
+    one end, circulates along the well trajectory, and exits at the other
+    end. The pipe is closed to the reservoir; only heat is exchanged.
 
 
 .. _wellbore-options:
@@ -141,6 +145,71 @@ WELL_GRID
       PEACEMAN_3D
         A 3D generalized Peaceman relationship for a well of arbitrary
         orientation in a 3D grid.
+
+    The following keywords apply only to the CLOSED_LOOP_U_SHAPE well type:
+
+    INLET_TEMPERATURE <float>
+      Temperature of the fluid entering the pipe [C]. Required.
+
+    PIPE_INNER_DIAMETER <float>
+      Inner diameter of the pipe [m]. Required.
+
+    PIPE_MASS_FLOW_RATE <float> <optional units>
+      Mass flow rate of the circulating fluid [kg/s]. Required and must be
+      non-negative. The mass flow rate is constant along the pipe, so mass
+      and energy are conserved as the fluid density changes with
+      temperature. The mean fluid velocity used in the Reynolds number is
+      computed locally from the mass flow rate, the local fluid density,
+      and the pipe cross-sectional area. This keyword replaces the obsolete
+      PIPE_FLOW_VELOCITY keyword, which is no longer supported.
+
+    PIPE_WALL_THICKNESS <float>
+      Thickness of the pipe wall [m]. Must be specified together with
+      PIPE_WALL_THERMAL_CONDUCTIVITY.
+
+    PIPE_WALL_THERMAL_CONDUCTIVITY <float> <optional units>
+      Thermal conductivity of the pipe wall [W/m-C]. Must be specified
+      together with PIPE_WALL_THICKNESS.
+
+    INSULATOR_THICKNESS <float>
+      Thickness of insulation surrounding the pipe wall [m]. Must be
+      specified together with INSULATOR_THERMAL_CONDUCTIVITY.
+
+    INSULATOR_THERMAL_CONDUCTIVITY <float> <optional units>
+      Thermal conductivity of the insulation [W/m-C]. Must be specified
+      together with INSULATOR_THICKNESS.
+
+    USE_WELL_INDEX
+      Include a Peaceman-type thermal well index (based on the reservoir
+      thermal conductivity and grid cell dimensions) as an additional
+      thermal resistance between the pipe and the reservoir cell.
+
+    NUSSELT_MODE <keyword string>
+      Correlation for the Nusselt number used to compute the convective
+      heat transfer coefficient within the pipe. Default is ZHANG_2015.
+
+      ZHANG_2015
+        Turbulent correlation of Zhang et al. (2015),
+        Nu = 8.7e-5 Re^0.92 Pr^1.89, for Re > 2300; NUSSELT_LAMINAR
+        otherwise.
+      LAMINAR
+        Constant laminar Nusselt number (see NUSSELT_LAMINAR).
+      CHEN_2021
+        Gnielinski-type turbulent correlation for Re > 10000,
+        NUSSELT_LAMINAR for Re < 2300, and linear interpolation between.
+        Supports the optional entrance correction.
+
+    NUSSELT_LAMINAR <float>
+      Laminar Nusselt number. Default is 4.36.
+
+    USE_NUSSELT_ENTRANCE_FACTOR
+      Apply the entrance correction 1 + (r/NUSSELT_Z_REF)^(2/3) to the
+      turbulent Nusselt number, where r is the inner pipe radius
+      (CHEN_2021 only).
+
+    NUSSELT_Z_REF <float>
+      Reference length used in the Nusselt entrance correction [m].
+      Default is 1.
 
   WELL_BOUNDARY_CONDITIONS
     Opens the WELL_BOUNDARY_CONDITIONS block, for directly specifying
@@ -294,3 +363,38 @@ Examples
     WELL well2
   END
   ...
+
+Closed-loop U-shaped heat exchanger (TH mode):
+
+::
+
+  SIMULATION
+    SIMULATION_TYPE SUBSURFACE
+    PROCESS_MODELS
+      SUBSURFACE_FLOW flow
+        MODE TH
+      /
+      WELL_MODEL well
+        TYPE CLOSED_LOOP_U_SHAPE
+      END
+    /
+  END
+  ...
+  WELLBORE_MODEL well
+    WELL_GRID
+      WELL_TRAJECTORY
+        SURFACE_ORIGIN         1.5  0.5  9.
+        SEGMENT_DXYZ   CASED   0.   0.  -7.
+        SEGMENT_DXYZ UNCASED   2.   0.   0.
+        SEGMENT_DXYZ   CASED   0.   0.   7.
+      /
+    /
+    WELL
+      INLET_TEMPERATURE 5.                     # [C]
+      PIPE_INNER_DIAMETER 0.1                  # [m]
+      PIPE_WALL_THICKNESS 5.d-3                # [m]
+      PIPE_WALL_THERMAL_CONDUCTIVITY 40. W/m-C
+      PIPE_MASS_FLOW_RATE 1.818051d-4 kg/s
+      USE_WELL_INDEX
+    /
+  END
