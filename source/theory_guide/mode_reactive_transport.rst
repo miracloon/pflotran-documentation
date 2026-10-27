@@ -1058,14 +1058,14 @@ or
    
    K_{ik}^{{\alpha}}= \big(K_{ij}^{{\alpha}}\big)^{z_k /z_j} \big(K_{jk}^{{\alpha}}\big)^{z_i/ z_j}.
 
-In terms of the coefficients :math:`k_i^{\alpha}` and
-:math:`\overline k_i^{{\alpha}}` corresponding to reference cation
-:math:`{\mathcal A}_k` the transformation becomes
+In terms of the coefficients :math:`k_i^{\alpha}` for reference cation
+:math:`{\mathcal A}_j` and :math:`\overline k_i^{{\alpha}}` for reference
+cation :math:`{\mathcal A}_k`, the transformation becomes
 
 .. math::
    :label: dummy45
    
-   \frac{\big(\overline k_i^{{\alpha}}\big)^{z_k}}{\big(\overline k_i^{{\alpha}}\big)^{z_i}} = \left[\frac{\big(k_i^{{\alpha}}\big)^{z_j}}{\big(k_i^{{\alpha}}\big)^{z_j}}\right]^{z_k/z_j}
+   \frac{\big(\overline k_i^{{\alpha}}\big)^{z_k}}{\big(\overline k_k^{{\alpha}}\big)^{z_i}} = \left[\frac{\big(k_i^{{\alpha}}\big)^{z_j}}{\big(k_j^{{\alpha}}\big)^{z_i}}\right]^{z_k/z_j}
    \left[\frac{\big(k_j^{{\alpha}}\big)^{z_k}}{\big(k_k^{{\alpha}}\big)^{z_j}}\right]^{z_i/z_j}.
 
 In terms of the coefficients :math:`k_l^{{\alpha}}` the sorbed
@@ -1189,7 +1189,7 @@ its derivative is given by
 .. math::
    :label: dummy58
    
-   \frac{df}{dX_j^{{\alpha}}} = 1 - \frac{1}{z_j^{} X_j^{{\alpha}}}\sum_{i\ne j} z_i^{} k_i^{{\alpha}}a_i^{} \left(\frac{X_j^{{\alpha}}}{k_j^{{\alpha}}a_j^{}}\right)^{z_i/z_j}.
+   \frac{df}{dX_j^{{\alpha}}} = 1 + \frac{1}{z_j^{} X_j^{{\alpha}}}\sum_{i\ne j} z_i^{} k_i^{{\alpha}}a_i^{} \left(\frac{X_j^{{\alpha}}}{k_j^{{\alpha}}a_j^{}}\right)^{z_i/z_j}.
 
 The reference mole fraction is then obtained by Newton-Raphson iteration
 

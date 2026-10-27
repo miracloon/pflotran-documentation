@@ -65,8 +65,9 @@ Examples
       MINERAL Calcite
       CEC 1.e-1
       CATIONS
-        Ca++ 1.e-4
-        Na+   1.d0
+        Na+   1.d0 REFERENCE
+        Ca++  3.38638672536d0
+        Mg++  6.00240096038d0
       /
     /
   END
