@@ -4,21 +4,24 @@ Benchmark Problems
 In this section several benchmark problems are introduced illustrating
 the capabilities of PFLOTRAN.
 
+.. _ion-exchange-benchmark:
+
 Ion Exchange
 ------------
 
-Voegelin et al. (2000) present results of ion exchange in a soil column
-for the system Ca-Mg-Na. Here PFLOTRAN is applied to this problem using
-the Gaines-Thomas exchange model. Soil column C1 with length 48.1 cm and
+:ref:`Voegelin et al. (2000) <voegelin-2000>` present results of ion exchange
+in a soil column for the system Ca-Mg-Na. Here PFLOTRAN is applied to this
+problem using the Gaines-Thomas exchange model. Soil column C1 with length 48.1 cm and
 diameter 0.3 cm was used for the simulations. The experiment used a pore
 water velocity of 5.6 cm/min. ``SPECIFIED_VELOCITY`` is the Darcy
 velocity, :math:`q = \porosity \times 5.6\,\mathrm{cm/min} =
 5.69333\times 10^{-4}\,\mathrm{m/s}` at :math:`\porosity = 0.61`. The
 inlet solution was changed during the course of the experiment at 20 and
-65 pore volumes with cation compositions listed in Table 2 of Voegelin
-et al. (2000). The CEC of the soil used in the experiments was determined
-to have a value of 0.06 :math:`\pm` 0.002 mol/kg. As PFLOTRAN requires
-the CEC in units of mol/m\ :math:`^3` this was obtained from the formula
+65 pore volumes with cation compositions listed in Table 2 of
+:ref:`Voegelin et al. (2000) <voegelin-2000>`. The CEC of the soil used in
+the experiments was determined to have a value of 0.06 :math:`\pm` 0.002
+mol/kg. As PFLOTRAN requires the CEC in units of mol/m\ :math:`^3` this was
+obtained from the formula
 
 .. math::
    
@@ -33,10 +36,11 @@ given by
    \density_s = \frac{\porosity \density_l}{1-\porosity} = 3.0344 \text{g/cm$^3$},
 
 for the mass density per pore volume :math:`\density_l` = 1.94
-g/cm\ :math:`^3` with values from Voegelin et al. (2000). This gives for
-the site density per bulk volume :math:`\omega = 71.004`
+g/cm\ :math:`^3` with values from :ref:`Voegelin et al. (2000) <voegelin-2000>`.
+This gives for the site density per bulk volume :math:`\omega = 71.004`
 mol/m\ :math:`^3`. The results of the simulation are shown in
-:ref:`fig:fionex` along with data reported by Voegelin et al. (2000).
+:ref:`fig:fionex` along with data reported by
+:ref:`Voegelin et al. (2000) <voegelin-2000>`.
 Self-sharpening fronts can be observed at approximately 10 and 71 pore
 volumes, and a self-broadening front from 30-55 pore volumes where
 agreement with experiment is not as good.
@@ -46,7 +50,7 @@ agreement with experiment is not as good.
    :name: fig:fionex
 
    Breakthrough curves for Ca2+, Mg2+ and Na+ compared with experimental
-   results from Voegelin et al. (2000).
+   results from :ref:`Voegelin et al. (2000) <voegelin-2000>`.
 
 The input file follows.
 

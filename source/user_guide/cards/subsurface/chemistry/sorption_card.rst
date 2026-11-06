@@ -40,6 +40,10 @@ Optional Cards:
 Examples
 --------
 
+For a complete soil-column transport example using ion exchange, see the
+:ref:`ion-exchange-benchmark` benchmark based on the experiments of
+:ref:`Voegelin et al. (2000) <voegelin-2000>`.
+
  :: 
 
   SORPTION

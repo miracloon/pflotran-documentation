@@ -44,6 +44,11 @@ MINERAL <string>
 
 Examples
 --------
+
+For a complete soil-column transport example based on the experiments of
+:ref:`Voegelin et al. (2000) <voegelin-2000>`, see the
+:ref:`ion-exchange-benchmark` benchmark.
+
  ::
 
   SORPTION

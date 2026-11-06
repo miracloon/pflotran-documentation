@@ -106,6 +106,9 @@ reservoirs. Paper SPE-4897. Proceedings of the 44th Annual California
 Regional Meeting of the Society of Petroleum Engineers. Richardson, TX:
 Society of Petroleum Engineers.
 
-Andreas Voegelin, Vijay M. Vulava, Florian Kuhnen, Ruben Kretzschmar
-(2000) Multicomponent transport of major cations predicted from binary
-adsorption experiments, Journal of Contaminant Hydrology, **46**, 319–338.
+.. _voegelin-2000:
+
+Voegelin, A., V.M. Vulava, F. Kuhnen, and R. Kretzschmar (2000)
+Multicomponent transport of major cations predicted from binary adsorption
+experiments, Journal of Contaminant Hydrology, **46**, 319–338.
+DOI `10.1016/S0169-7722(00)00132-7 <https://doi.org/10.1016/S0169-7722(00)00132-7>`_.
