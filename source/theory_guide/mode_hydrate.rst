@@ -68,7 +68,7 @@ The internal energy of the ice phase is computed by (Fukusako and Yamada, 1993):
 
    U_i = L_w + 4.475(T^2 - 273.15^2 ), T < 90K,
 
-where T is the temperature and :math:`L_w` is the latent heat ofo fusion for
+where T is the temperature and :math:`L_w` is the latent heat of fusion for
 water, set at -6017.1 J/mol.
 
 The enthalpy of the hydrate phase is computed by (Handa, 1998):
